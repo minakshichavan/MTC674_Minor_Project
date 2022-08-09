@@ -1,0 +1,33 @@
+#/!/bin/bash
+# Author 	: Minakshi Pushpendra Chavan
+# Enrollment ID	: MIT21-A-03-PG-MTCST-34550
+# Roll No	: 04	
+# Guide		: Prof Dr B. S. Sonawane
+# Description	: This is a Dummy Package and Dummy Script to be deployed in the system for POC
+
+echo " This is a dummy binary execution which will just check the presence of the files deployed by the dummy-package, nothing else!"
+
+# Check if config file is present or not
+if [ -f /etc/dummy-package/dummy-package.conf ]
+	then
+	echo " Configuration File : /etc/dummy-package/dummy-package.conf is present"
+else
+	echo " Configuration File : /etc/dummy-package/dummy-package.conf is missing"
+fi
+
+# check if binary file is present or not
+if [ -f /usr/bin/dummy-binary ]
+	then
+	echo " Binary Exe File : /usr/bin/dummy-binary is present"
+else
+	echo " Binary Exe File : /usr/bin/dummy-binary is missing"
+fi
+
+# check if manual page file is present or not
+if [ -f /usr/local/man/man1/dummy-package.1.gz ]
+	then
+	echo " Manual Page File	: /usr/local/man/man1/dummy-package.1.gz is present"
+else
+	echo " Manual Page File : /usr/local/man/man1/dummy-package.1.gz is missing"
+fi
+
