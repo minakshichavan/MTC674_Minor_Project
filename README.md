@@ -18,11 +18,6 @@ Red Hat Enterprise Linux Server release 7.9 (Maipo)
 [minakshi@rhel7-basemachine ~]$ uname -a
 Linux rhel7-basemachine 3.10.0-1160.71.1.el7.x86_64 #1 SMP Wed Jun 15 08:55:08 UTC 2022 x86_64 x86_64 x86_64 GNU/Linux
 ```
-- Import a HTML file and watch it magically convert to Markdown
-- Drag and drop images (requires your Dropbox account be linked)
-- Import and save files from GitHub, Dropbox, Google Drive and One Drive
-- Drag and drop markdown and HTML files into Dillinger
-- Export documents as Markdown, HTML and PDF
 
 ## Step 2 - Gather the dummy code
 Get the dummy code, create a `tar.gz` archive in an appropriate `tree` structure and place it under `~/rpmbuild` directory as follows.
