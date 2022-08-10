@@ -596,3 +596,41 @@ Installed:
 
 Complete!
 ```
+The package `dummy-package` is now installed and it's details can be verified as follows.
+```
+[root@rhel7-basemachine ~]# rpm -q dummy-package
+dummy-package-1.0.0-0.el7.noarch
+
+[root@rhel7-basemachine ~]# rpm -ql dummy-package
+/etc/dummy-package/dummy-package.conf
+/usr/bin/dummy-binary
+/usr/local/man/man1/dummy-package.1.gz
+
+[root@rhel7-basemachine ~]# dummy-binary 
+ This is a dummy binary execution which will just check the presence of the files deployed by the dummy-package, nothing else!
+ Configuration File : /etc/dummy-package/dummy-package.conf is present
+ Binary Exe File : /usr/bin/dummy-binary is present
+ Manual Page File	: /usr/local/man/man1/dummy-package.1.gz is present
+
+[root@rhel7-basemachine ~]# rpm -qi dummy-package
+Name        : dummy-package
+Version     : 1.0.0
+Release     : 0.el7
+Architecture: noarch
+Install Date: Wednesday 10 August 2022 12:31:03 PM IST
+Group       : Applications/File
+Size        : 1524
+License     : GPLv2+
+Signature   : RSA/SHA1, Wednesday 10 August 2022 09:32:37 AM IST, Key ID 9fab404afce5d7d6
+Source RPM  : dummy-package-1.0.0-0.el7.src.rpm
+Build Date  : Wednesday 10 August 2022 09:23:28 AM IST
+Build Host  : rhel7-basemachine
+Relocations : (not relocatable)
+Packager    : Minakshi Pushpendra Chavan
+Vendor      : G S Mandal's Maharashtra Institute of Technology, Aurangabad
+Summary     : This is a dummy package built by Minakshi Pushpendra Chavan.
+Description :
+This is a dummy package built by Minakshi Pushpendra Chavan as a part of minor project for completion of first year of Master of Technology in Computer Science and Technology under the guidance of Prof Dr B S Sonawane Sir.
+```
+
+On any RHEL client to implement the package deployment test, please repeat only step 10 and 11.
