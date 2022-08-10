@@ -521,6 +521,7 @@ drwxr-xr-x. 2 root     root     4096 Aug 10 09:55 repodata
 Hosted this entire directory `/tmp/minakshichavan` at http://pushpendrachavan/minakshichavan along with the public key and `yum` package `metadata`
 
 ## Step 10 - Create a `repo` file on any Red Hat Enterprise Linux/CentOS/Fedora Linux/Scientic Linux/Oracle Linux pointing out to the onlie repository as follows.
+Create a repo file as follows.
 ```
 [minakshi@rhel7-basemachine ~]$ sudo cat /etc/yum.repos.d/minakshichavan.repo 
 [minakshichavan]
@@ -528,7 +529,11 @@ Name=Minakshi Chavan Dummy Repo
 baseurl=http://pushpendrachavan.in/minakshichavan/
 enabled=1
 gpgcheck=1
-gpgkey=http://pushpendrachavan.in/minakshchavan/minakshichavan-key.txt
+gpgkey=https://pushpendrachavan.in/minakshchavan/minakshichavan-key.txt
+```
+As as additional step, you can also import `rpm` key manually as follows.
+```
+[minakshi@rhel7-basemachine ~]$ sudo rpm --import https://pushpendrachavan.in/minakshchavan/minakshichavan-key.txt
 ```
 And verify the package being fetched.
 ```
