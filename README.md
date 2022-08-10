@@ -433,3 +433,166 @@ OPTIONS
                                                               dummy-package(1)
 ```
 In this way, the dummay package is built in order to delivery the dummy payload using Red Hat Package Manager.
+
+## Step 9 - Create a dummy repository and host it on an internet public location for test purpose.
+
+The single package can be a part of an existing repository or a standalone single and independent repository and can be done as follows.
+```
+[minakshi@rhel7-basemachine ~]$ mkdir /tmp/minakshichavan
+[minakshi@rhel7-basemachine ~]$ cp rpmbuild/RPMS/noarch/dummy-package-1.0.0-0.el7.noarch.rpm /tmp/minakshichavan/
+[minakshi@rhel7-basemachine ~]$ ls -l /tmp/minakshichavan
+total 8
+-rw-rw-r--. 1 minakshi minakshi 4868 Aug 10 09:55 dummy-package-1.0.0-0.el7.noarch.rpm
+[minakshi@rhel7-basemachine ~]$ sudo createrepo -v /tmp/minakshichavan/
+Spawning worker 0 with 1 pkgs
+Spawning worker 1 with 0 pkgs
+Spawning worker 2 with 0 pkgs
+Spawning worker 3 with 0 pkgs
+Spawning worker 4 with 0 pkgs
+Spawning worker 5 with 0 pkgs
+Spawning worker 6 with 0 pkgs
+Spawning worker 7 with 0 pkgs
+Worker 0: reading dummy-package-1.0.0-0.el7.noarch.rpm
+Workers Finished
+Saving Primary metadata
+Saving file lists metadata
+Saving other metadata
+Generating sqlite DBs
+Starting other db creation: Wed Aug 10 09:55:17 2022
+Ending other db creation: Wed Aug 10 09:55:17 2022
+Starting filelists db creation: Wed Aug 10 09:55:17 2022
+Ending filelists db creation: Wed Aug 10 09:55:17 2022
+Starting primary db creation: Wed Aug 10 09:55:17 2022
+Ending primary db creation: Wed Aug 10 09:55:18 2022
+Sqlite DBs complete
+[minakshi@rhel7-basemachine ~]$ cp testkey.txt /tmp/minakshichavan/minakshichavan-key.txt
+[minakshi@rhel7-basemachine ~]$ cat /tmp/minakshichavan/minakshichavan-key.txt
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+Version: GnuPG v2.0.22 (GNU/Linux)
+
+mQENBGLzLQkBCADgYeYeDgsGeTDcRGMYGTc25khK1ZbsyR+Czylx7doZg02TVyLQ
+InKcLDggHQQxZlDU5olU6a/3UsKHAKJ9HZf5jt7a6qsbIAhKQzCW/s/TPzF+lBUT
+8k/N20qiLRH1sq2V63mXKusHKzg7cepxJt7I9J/IgOzFelPud3PJvFtOQVtfDt+G
+BrK3dGiCXv/9kV84wi7U6Ltk4qsL36N2N9fcysv6FiEe6lS3ttrnvdVSMRodetP3
+ncTwuu098eZNzoI4hA12MQraSW1zmcYw1yTPAoKGqpmBRXzmjQwmBh135vPALC3v
+511pM8497mgDDxSvnx+Mwm4xfl9OXr8KZPkzABEBAAG0NHRlc3R1c2VybmFtZSAo
+dGVzdCBjb21tZW50KSA8dGVzdHVzZXJuYW1lQGdtYWlsLmNvbT6JATkEEwECACMF
+AmLzLQkCGwMHCwkIBwMCAQYVCAIJCgsEFgIDAQIeAQIXgAAKCRCfq0BK/OXX1tRe
+B/wM2aEA9XqtpK5r3czDhgG7vxQ64u6h5Paf85qP5W8wlYjW0jVB6AbslVfKWAGd
+Aa24+PjNKH71jr3QuQSHBM4GPUcpUNYymef2Ecky6P5k6YYoOPGoZPRozSjf98C1
+JTdpnfJ8Giak/ucWEjeZ5ogyxTWJp/k4yT6AEhbLSeMjs2pMNOypC76owjaDULMS
+rs6L1tK9yqUrRWZBMOBZ2i8P1aimsZWQuzk8GgnG2zjmsowldIEZF+xfoKXwhfha
+rgO7zFkI8YJO4SnlG3/uVCYc6h7TgIJaY93tK/YaSg5AkHKPQXz63DxRTWtVDX1O
+ChYVPD0WJIkmr/qPAvc8I+4fuQENBGLzLQkBCADEx4Ini+dTqI8K6Q8jkyN99/UX
+FHF+0OsG6V1BYe2jQQWEoPmcbHG05MMbut7vTzww0O9UDneH5xQ8cFbgU8Wrvg2o
+q7A1/VIwlCOBaR84AYCd+AkomeceyN3UBQwJDxblgocW0kNQkyGmAtyKGJEaHtFl
+jAS5zxL6XzVkIP1ElDkYOpGdy6laYD5c9GUEnVXJ0e3x1OnTQXo1a/jtwUMiHlfF
+MtGVAnmy8+FecqTtX0qRBkAdaZnNtdXJXFpW1Fm5ZZuIMQ6Jn4M/fFzfoZkHUQ1F
+IVhHlI1SubXDisHm+Ngw2rXO4dF0xlqPEHNfU9SB6yhzpGPj5bYLFHOa41cVABEB
+AAGJAR8EGAECAAkFAmLzLQkCGwwACgkQn6tASvzl19b9swgAnwYX7ryoa7aYRH27
+xG4LHNvoFb7qBqcYrz+J5QQKAFeOYq7XYNfe+GHhRL4Ac/wPBcSRYaHcdSuHr8cM
+hy24kyGW3tBQXT+qfoVywoJJlmkghTsBEwgZL4KIMIWeGawQxyNpz3M71LxLF1VC
+mONLQBHLb1NH5J07/mUvwwG+lXpNccCEddKUvMp8nldXnNBmlTz4fMPbzbqudi2J
+t18jKMTI9w8d4Tvm2clJE0Gn7knuhGhX3FXuasanP9sXifM8p/d8EZXK/Gmv9Atp
+IPy2uFMvqbRFlact+bPk8Ru+mfsuxVoCIWXVwPhUsNgN+dGbyTu2/eODesx8AN9o
+Lzob4Q==
+=fnMc
+-----END PGP PUBLIC KEY BLOCK-----
+[minakshi@rhel7-basemachine ~]$ ls -l /tmp/minakshichavan/
+total 16
+-rw-rw-r--. 1 minakshi minakshi 4868 Aug 10 09:55 dummy-package-1.0.0-0.el7.noarch.rpm
+-rw-rw-r--. 1 minakshi minakshi 1748 Aug 10 09:55 minakshichavan-key.txt
+drwxr-xr-x. 2 root     root     4096 Aug 10 09:55 repodata
+[minakshi@rhel7-basemachine ~]$ tree /tmp/minakshichavan/
+/tmp/minakshichavan/
+├── dummy-package-1.0.0-0.el7.noarch.rpm
+├── minakshichavan-key.txt
+└── repodata
+    ├── 39fd67569da58f0fbd48a03ad3e9f91c33359e59f0956b050f1ccb7e8ddc5942-other.sqlite.bz2
+    ├── 5665650d903e94d8f1901d121ddb680af27487bb0bb8ff34e2ea305e09455266-primary.xml.gz
+    ├── 6f5209315934692d1f1cc4569411fad12ff51e7ae22ca86dc8a07cd5d43a90aa-filelists.xml.gz
+    ├── e25b619f7c207bc126bc943e0ecfbaedd31b9dab270525cadf14ab249c9185b3-filelists.sqlite.bz2
+    ├── e43c9e910cb47f1dcea43f3b2fc387b9e4cdd27c33efabf09cf7150fae9c46d6-other.xml.gz
+    ├── f18be4b3a295564c9be8212ecfb7af1caa5227bc317c4a3f40c909e0f421d681-primary.sqlite.bz2
+    └── repomd.xml
+
+1 directory, 9 files
+```
+Hosted this entire directory `/tmp/minakshichavan` at http://pushpendrachavan/minakshichavan along with the public key and `yum` package `metadata`
+
+## Step 10 - Create a `repo` file on any Red Hat Enterprise Linux/CentOS/Fedora Linux/Scientic Linux/Oracle Linux pointing out to the onlie repository as follows.
+```
+[minakshi@rhel7-basemachine ~]$ sudo cat /etc/yum.repos.d/minakshichavan.repo 
+[minakshichavan]
+Name=Minakshi Chavan Dummy Repo
+baseurl=http://pushpendrachavan.in/minakshichavan/
+enabled=1
+gpgcheck=1
+gpgkey=http://pushpendrachavan.in/minakshchavan/minakshichavan-key.txt
+```
+And verify the package being fetched.
+```
+[minakshi@rhel7-basemachine ~]$ yum repolist minakshichavan
+Loaded plugins: langpacks, product-id, search-disabled-repos, subscription-manager
+google-chrome                                                                                                                                 3/3
+slack                                                                                                                                       37/37
+repo id                                                         repo name                                                                   status
+minakshichavan                                                  Minakshi Chavan Dummy Repo                                                  1
+repolist: 1
+
+[minakshi@rhel7-basemachine ~]$ yum info dummy-package
+Loaded plugins: langpacks, product-id, search-disabled-repos, subscription-manager
+Available Packages
+Name        : dummy-package
+Arch        : noarch
+Version     : 1.0.0
+Release     : 0.el7
+Size        : 4.8 k
+Repo        : minakshichavan
+Summary     : This is a dummy package built by Minakshi Pushpendra Chavan.
+License     : GPLv2+
+Description : This is a dummy package built by Minakshi Pushpendra Chavan as a part of minor project for completion of first year of Master of
+            : Technology in Computer Science and Technology under the guidance of Prof Dr B S Sonawane Sir.
+```
+
+## Step 11 - Install the package on any client online through internet.
+The package now can be installed on any system in the world just by following step 10 and 11 as follows.
+```
+[minakshi@rhel7-basemachine ~]$ sudo yum install dummy-package -y
+Loaded plugins: langpacks, product-id, search-disabled-repos, subscription-manager
+Resolving Dependencies
+--> Running transaction check
+---> Package dummy-package.noarch 0:1.0.0-0.el7 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+==================================================================================================================================================
+ Package                             Arch                         Version                              Repository                            Size
+==================================================================================================================================================
+Installing:
+ dummy-package                       noarch                       1.0.0-0.el7                          minakshichavan                       4.8 k
+
+Transaction Summary
+==================================================================================================================================================
+Install  1 Package
+
+Total download size: 4.8 k
+Installed size: 1.5 k
+Downloading packages:
+dummy-package-1.0.0-0.el7.noarch.rpm                                                                                       | 4.8 kB  00:00:00     
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+Warning: RPMDB altered outside of yum.
+  Installing : dummy-package-1.0.0-0.el7.noarch                                                                                               1/1 
+Please run dummy-package command to view deployment !
+Your constructive feedback will be highly appreciated!!!
+  Verifying  : dummy-package-1.0.0-0.el7.noarch                                                                                               1/1 
+
+Installed:
+  dummy-package.noarch 0:1.0.0-0.el7                                                                                                              
+
+Complete!
+```
