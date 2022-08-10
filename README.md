@@ -529,7 +529,7 @@ Name=Minakshi Chavan Dummy Repo
 baseurl=http://pushpendrachavan.in/minakshichavan/
 enabled=1
 gpgcheck=1
-gpgkey=https://pushpendrachavan.in/minakshchavan/minakshichavan-key.txt
+gpgkey=https://pushpendrachavan.in/minakshichavan/minakshichavan-key.txt
 ```
 As as additional step, you can also import `rpm` key manually as follows.
 ```
