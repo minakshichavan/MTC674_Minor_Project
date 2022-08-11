@@ -639,3 +639,4 @@ This is a dummy package built by Minakshi Pushpendra Chavan as a part of minor p
 ```
 
 On any RHEL client to implement the package deployment test, please repeat only step 10 and 11.
+A Quick test can be done online on a CentOS workstation which is available at https://www.onworks.net/os-distributions/rpm-based/free-centos-workstation-online
